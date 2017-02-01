@@ -3,6 +3,8 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/mitchellh/mapstructure"
 	r "gopkg.in/gorethink/gorethink.v3"
 )
@@ -18,7 +20,7 @@ const (
 	ChannelStop = iota
 )
 
-/*Feedlet is a struct. A Struct is a way to declare a data type. Similar to a prototype object to which you can add methods and properties. The way to define a method prop is by using an 'interface' as shown below. An interface is a way to assign behaviors to a data type in GO. An empty interface does not specify any methods and thus can be said that every data type in GO implements the behavior of an empty interface. Can be used as a placeholder if you don't know what the behavior will be.
+/*Feedlet is a struct. A Struct is a way to declare a data type. Similar to a JS prototype object to which you can add methods and properties. The way to define a method prop is by using an 'interface' as shown below. An interface is a way to assign behaviors to a data type in GO. An empty interface does not specify any methods and thus can be said that every data type in GO implements the behavior of an empty interface. Can be used as a placeholder if you don't know what the behavior will be.
 type Speaker interface {
 	Speak()
 }
@@ -31,8 +33,7 @@ type Feedlet struct {
 	Name string `json:"name" gorethink:"name"`       // changes key from Name to name when json
 }
 
-// Goal of this handler is to send all existing feed records to the client upon site visit and then utilize a change feed to populate new records as they are uploaded.
-func subscribeFeed(client *Client, data interface{}) {
+/*func subscribeFeed(client *Client, data interface{}) {
 	// changefeed is a blocking operation so place in seperate GO routine.
 	go func() {
 		cursor, err := r.Table("upload").Changes(r.ChangesOpts{IncludeInitial: true}).Run(client.session)
@@ -47,7 +48,7 @@ func subscribeFeed(client *Client, data interface{}) {
 			}
 		}
 	}()
-}
+}*/
 
 func addUpload(client *Client, data interface{}) {
 	var upload Feedlet // upload saved to DB
@@ -66,7 +67,8 @@ func addUpload(client *Client, data interface{}) {
 	}()
 }
 
-/*func subscribeFeed(client *Client, data interface{}) {
+// Goal of this handler is to send all existing feed records to the client upon site visit and then utilize a change feed to populate new records as they are uploaded.
+func subscribeFeed(client *Client, data interface{}) {
 	fmt.Println("subscribed")
 	stop := client.NewStopChannel(ChannelStop)
 	result := make(chan r.ChangeResponse)
@@ -94,7 +96,7 @@ func addUpload(client *Client, data interface{}) {
 			case change := <-result:
 				if change.NewValue != nil && change.OldValue == nil {
 					// a new upload has been added
-					client.send <- Message{"new upload", change.NewValue}
+					client.send <- Message{"subscribing", change.NewValue} // subscribing event
 				} else if change.NewValue == nil && change.OldValue != nil {
 					// an upload has been deleted
 					client.send <- Message{"delete upload", change.NewValue}
@@ -103,4 +105,4 @@ func addUpload(client *Client, data interface{}) {
 
 		}
 	}()
-}*/
+}

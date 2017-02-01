@@ -226,3 +226,8 @@
 2017-02-01T08:18:53.990386000 0.483233s notice: Server ready, "Marcoss_MacBook_Pro_local_k7t" bb6f92f9-cb60-4b49-a40b-e978a027267f
 2017-02-01T08:18:55.382523000 1.875318s info: Table 867b24cd-d3f7-4b91-b1ec-70d9e1295dd7: Starting a new Raft election for term 10.
 2017-02-01T08:18:55.404727000 1.897522s info: Table 867b24cd-d3f7-4b91-b1ec-70d9e1295dd7: This server is Raft leader for term 10. Latest log index is 28.
+2017-02-01T09:40:38.855390000 4743.148045s notice: Server got SIGINT from pid 9666, uid 501; shutting down...
+2017-02-01T09:40:38.858474000 4743.151126s notice: Shutting down client connections...
+2017-02-01T09:40:38.868722000 4743.161375s notice: All client connections closed.
+2017-02-01T09:40:38.868731000 4743.161383s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2017-02-01T09:40:38.923841000 4743.216438s notice: Storage engine shut down.

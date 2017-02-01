@@ -1,4 +1,4 @@
-# Real-time Boilerplate GO Server
+# Boilerplate GO Server w/ Real-time Websocketing
 
 Built From : [**Build Realtime Apps | React Js, Golang & RethinkDB**](https://www.udemy.com/realtime-apps-with-reactjs-golang-rethinkdb/learn/v4/content)
 
