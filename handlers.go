@@ -1,4 +1,4 @@
-/*All functions in this file must of type Handler defined in router.go file. It must have the same params.
+/*All functions in this file must of type Handler defined in router.go file. It must have the same params. The intent here is to handle our client-side events i.e. CRUD.
  */
 package main
 

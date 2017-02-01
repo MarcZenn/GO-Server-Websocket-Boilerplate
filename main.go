@@ -1,4 +1,7 @@
 /*Instruct compiler to make this file an executable using 'package main'.... 'package somelibname' would create a library. Keyword main tells us this package will be compiled to a program executable instead of .a file which is a static library archive file.
+*
+*
+*
  */
 package main
 
