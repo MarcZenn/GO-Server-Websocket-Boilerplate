@@ -1,6 +1,8 @@
 /*Responsibilities of the Client/Struct:
  *
- * Send & Receive messages to Browser. Client will need access to websocket for this.
+ * Send & Receive messages to Browser.
+ * Manage client connection to server.
+ * Client will need access to websocket for this.
  *
  */
 package main
